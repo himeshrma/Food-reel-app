@@ -1,8 +1,7 @@
 //Isme Server ko start karte hain aur Database se connect karte hain
 
-require("dotenv").config();
-
 const app = require("./app");
+require("dotenv").config();
 const connectDB = require("./db/db");
 
 // Connect to the database
