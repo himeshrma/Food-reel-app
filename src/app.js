@@ -15,6 +15,11 @@ app.use("/api/food", foodRoutes);
 
 app.get("/", (req, res) => {
   res.send("Hello World!");
+  console.log(
+    "ImageKit keys:",
+    process.env.IMAGEKIT_PUBLIC_KEY,
+    process.env.IMAGEKIT_URL_ENDPOINT
+  );
 });
 
 app.post("/test", (req, res) => {
