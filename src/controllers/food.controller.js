@@ -24,4 +24,12 @@ async function createFood(req, res) {
   //   console.log(fileUploadResult);
 }
 
-module.exports = { createFood };
+async function getFoodItems(req, res) {
+  const foodItems = await foodModel.find({});
+  res.status(200).json({
+    message: "Food Items Fetched Successfully!",
+    foodItems,
+  });
+}
+
+module.exports = { createFood, getFoodItems };

@@ -5,7 +5,7 @@ const jwt = require("jsonwebtoken");
 
 // User Registration Controller
 async function registerUser(req, res) {
-  const { fullName, email, password } = req.body;
+  const { fullName, email, password, phone, address, contactName } = req.body;
 
   const isAlreadyRegistered = await userModel.findOne({ email });
 
@@ -18,6 +18,7 @@ async function registerUser(req, res) {
   const user = await userModel.create({
     fullName,
     email,
+
     password: hashPassword,
   });
 
@@ -73,7 +74,7 @@ async function logoutUser(req, res) {
 }
 
 async function registerFoodPartner(req, res) {
-  const { name, email, password } = req.body;
+  const { name, email, password, contactName, phone, address } = req.body;
 
   const isAlreadyRegistered = await foodPartnerModel.findOne({ email });
 
@@ -86,6 +87,9 @@ async function registerFoodPartner(req, res) {
   const foodPartner = await foodPartnerModel.create({
     name,
     email,
+    contactName,
+    phone,
+    address,
     password: hashPassword,
   });
 
@@ -104,6 +108,9 @@ async function registerFoodPartner(req, res) {
       _id: foodPartner._id,
       name: foodPartner.name,
       email: foodPartner.email,
+      contactName: foodPartner.contactName,
+      phone: foodPartner.phone,
+      address: foodPartner.address,
     },
   });
 }
